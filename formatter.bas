@@ -1,6 +1,13 @@
-Sub Anz(sheetName As String)
+Private Const None As Long = -1
+Private Const LightBlue As Long = &HADD8E6 ' RBG(173, 216, 230)
+Private Const DarkBlue As Long = &H286EAA ' RBG(40, 110, 170)
+Private Const LightYellow As Long = &HFFFF99 ' RBG(255, 255, 153)
+Private Const LightRed As Long = &HFFA0A0 ' RBG(255, 160, 160)
 
-    Sheets(sheetName).Select
+Private Sub Anz(sheetName As String, tabColor As Long)
+    Dim ws As Worksheet
+    Set ws = ThisWorkbook.Worksheets(sheetName)
+    ws.Select
     Columns("G:G").Select
     Selection.Cut
     Columns("A:A").Select
@@ -12,12 +19,16 @@ Sub Anz(sheetName As String)
     
     SplitAmount
     addTypeColumn
+    SetTabColor ws, tabColor
     
 End Sub
 
-Sub Westpac(sheetName As String)
+Private Sub Westpac(sheetName As String, tabColor As Long)
 
-    Sheets(sheetName).Select
+     Dim ws As Worksheet
+    Set ws = ThisWorkbook.Worksheets(sheetName)
+    ws.Select
+
     Columns("C:C").Select
     Selection.Cut
     Columns("B:B").Select
@@ -25,12 +36,16 @@ Sub Westpac(sheetName As String)
     
     SplitAmount
     addTypeColumn
+    SetTabColor ws, tabColor
 
 End Sub
 
-Sub Asb(sheetName As String)
+Private Sub Asb(sheetName As String, tabColor As Long)
+    
+     Dim ws As Worksheet
+    Set ws = ThisWorkbook.Worksheets(sheetName)
+    ws.Select
 
-    Sheets(sheetName).Select
     Rows("1:6").Select
     Selection.Delete Shift:=xlUp
     Rows("2:2").Select
@@ -46,10 +61,11 @@ Sub Asb(sheetName As String)
     
     SplitAmount
     addTypeColumn
+    SetTabColor ws, tabColor
     
 End Sub
 
-Sub SplitAmount()
+Private Sub SplitAmount()
     
     Columns("D:D").Select
     Selection.Insert Shift:=xlToRight, CopyOrigin:=xlFormatFromLeftOrAbove
@@ -71,7 +87,7 @@ Sub SplitAmount()
 
 End Sub
 
-Sub addTypeColumn()
+Private Sub addTypeColumn()
 
     Columns("F:F").Select
     Selection.Insert Shift:=xlToRight, CopyOrigin:=xlFormatFromLeftOrAbove
@@ -80,12 +96,18 @@ Sub addTypeColumn()
     
 End Sub
 
+Private Sub SetTabColor(ws As Worksheet, ByVal tabColor As Long)
+   If tabColor <> vbNullColor Then
+      ws.Tab.Color = tabColor
+   End If
+End Sub
+
 
 Sub Formatter()
-    ' format csv file
-    Anz "C-ANZ-go"
-    Anz "C-ANZ-saving"
-    Anz "S-ANZ-loan"
-    Westpac "S-Westpac"
-    Asb "Y-ASB"
+    ' set color reference
+    Anz "C-ANZ-go", None
+    Anz "C-ANZ-saving", LightBlue
+    Anz "S-ANZ-loan", DarkBlue
+    Westpac "S-Westpac", LightRed
+    Asb "Y-ASB", LightYellow
 End Sub

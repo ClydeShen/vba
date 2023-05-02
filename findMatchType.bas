@@ -1,4 +1,4 @@
-Sub FindMatchingCell(ByVal searchStr As String, ByVal startRow As Long, ByRef resultCell As Range)
+Private Sub FindMatchingCell(ByVal searchStr As String, ByVal startRow As Long, ByRef resultCell As Range)
 
     Dim ws As Worksheet
     Set ws = ThisWorkbook.Sheets("Summary")
@@ -20,16 +20,14 @@ Sub FindMatchingCell(ByVal searchStr As String, ByVal startRow As Long, ByRef re
 End Sub
 
 ' set the type cell
-Sub SetTypeCell(ByVal emptyCell As Range, ByVal typeCell As Range)
-  ' if typeCell is Nothing then print the address of emptyCell
-    If typeCell Is Nothing Then
+ Private Sub SetTypeCell(ByVal emptyCell As Range, ByVal typeCell As Range)
+    If Not typeCell Is Nothing Then
+        Range(typeCell.Address).Select
+        Selection.Copy
+        Range(emptyCell.Address).Select
+        ActiveSheet.Paste
+    Else
         Debug.Print emptyCell.Address
-    End
-
-
-   If Not typeCell Is Nothing Then ' check if typeCell is not Nothing
-        emptyCell.Value = typeCell.Value
-        emptyCell.Interior.Color = typeCell.Interior.Color
     End If
 End Sub
 
@@ -41,7 +39,7 @@ Sub HightlightTypes()
     Dim midRow As Long
     
     Set summary = ThisWorkbook.Sheets("Summary")
-    
+    summary.Select
     dataRow = summary.Cells(summary.Rows.Count, 1).End(xlUp).Row
     midRow = dataRow + 1
 
@@ -59,6 +57,7 @@ Sub HightlightTypes()
               InStr(1, otherPartyCell, "Pak N Save Fuel", vbTextCompare) = 0) _
             Or InStr(1, otherPartyCell, "New World", vbTextCompare) > 0 _
             Or InStr(1, otherPartyCell, "Taiping", vbTextCompare) > 0 _
+            Or InStr(1, otherPartyCell, "Tai Ping", vbTextCompare) > 0 _
             Or InStr(1, otherPartyCell, "Golden Apple", vbTextCompare) > 0 _
             Or InStr(1, otherPartyCell, "Seasons Markets", vbTextCompare) > 0 Then
 
@@ -87,13 +86,14 @@ Sub HightlightTypes()
         If InStr(1, otherPartyCell, "AT HOP", vbTextCompare) > 0  _ 
             Or InStr(1, otherPartyCell, "Gull", vbTextCompare) > 0 _
             Or InStr(1, otherPartyCell, "BP", vbTextCompare) > 0 _
+            Or InStr(1, otherPartyCell, "KIWI FUELS", vbTextCompare) > 0 _
             Or InStr(1, otherPartyCell, "Pak N Save Fuel", vbTextCompare) > 0 Then
             FindMatchingCell "Travel", midRow, typeCell
             SetTypeCell summary.Cells(j, 6), typeCell
         End If
 
         ' category: Telephone
-        If InStr(1, otherPartyCell, "Vodafone", vbTextCompare) > 0 _ 
+        If InStr(1, otherPartyCell, "One NZ", vbTextCompare) > 0 _ 
           Or InStr(1, otherPartyCell, "Skinny", vbTextCompare) > 0 Then
             FindMatchingCell "Telephone", midRow, typeCell
             SetTypeCell summary.Cells(j, 6), typeCell
@@ -105,7 +105,33 @@ Sub HightlightTypes()
             SetTypeCell summary.Cells(j, 6), typeCell
         End If
 
-    
+        ' category: Water
+        If InStr(1, otherPartyCell, "Watercare", vbTextCompare) > 0 Then
+            FindMatchingCell "Water", midRow, typeCell
+            SetTypeCell summary.Cells(j, 6), typeCell
+        End If
+
+        ' category: Entertainment subscription
+        If InStr(1, otherPartyCell, "Google YouTube", vbTextCompare) > 0 _ 
+          Or InStr(1, otherPartyCell, "Google Lumosity", vbTextCompare) > 0 Then
+            FindMatchingCell "Entertainment subscriptions", midRow, typeCell
+            SetTypeCell summary.Cells(j, 6), typeCell
+        End If
+
+        ' category: Salary
+        If InStr(1, summary.Cells(j, 10), "FROM HAWKINS LIMITED", vbTextCompare) > 0 _ 
+          Or InStr(1, otherPartyCell, "Salary", vbTextCompare) > 0 Then
+            FindMatchingCell "Salary", midRow, typeCell
+            SetTypeCell summary.Cells(j, 6), typeCell
+        End If
+
+        ' category: Rent
+        If InStr(1, otherPartyCell, "Chen", vbTextCompare) > 0 _ 
+          Or InStr(1, otherPartyCell, "Wang,", vbTextCompare) > 0 _ 
+          Or InStr(1, summary.Cells(j, 9), "rent", vbTextCompare) > 0 Then
+            FindMatchingCell "Rent", midRow, typeCell
+            SetTypeCell summary.Cells(j, 6), typeCell
+        End If
             
     Next j
             
