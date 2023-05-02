@@ -64,15 +64,22 @@ Sub HightlightTypes()
             FindMatchingCell "Groceries", midRow, typeCell
             SetTypeCell summary.Cells(j, 6), typeCell
         End If
-        ' category: Home & contents
+        ' category: Home & contents Insurance
         If InStr(1, otherPartyCell, "AA Insurance Pre", vbTextCompare) > 0 Then
             FindMatchingCell "Home & contents", midRow, typeCell
             SetTypeCell summary.Cells(j, 6), typeCell
         End If
         
-        ' category: Mortgage repayments/rent
+        ' category: Health Insurance
+        If InStr(1, otherPartyCell, "Southern Cross", vbTextCompare) > 0 _ 
+            Or InStr(1, summary.Cells(j, 10), "Southern Cross", vbTextCompare) > 0 Then
+            FindMatchingCell "Health", midRow, typeCell
+            SetTypeCell summary.Cells(j, 6), typeCell
+        End If
+
+        ' category: Mortgage repayments
         If InStr(1, otherPartyCell, "Loan Payment", vbTextCompare) > 0 Then
-            FindMatchingCell "Mortgage repayments/rent", midRow, typeCell
+            FindMatchingCell "Mortgage repayments", midRow, typeCell
             SetTypeCell summary.Cells(j, 6), typeCell
         End If
 
@@ -117,6 +124,8 @@ Sub HightlightTypes()
             FindMatchingCell "Entertainment subscriptions", midRow, typeCell
             SetTypeCell summary.Cells(j, 6), typeCell
         End If
+
+   
 
         ' category: Salary
         If InStr(1, summary.Cells(j, 10), "FROM HAWKINS LIMITED", vbTextCompare) > 0 _ 
