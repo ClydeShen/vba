@@ -84,7 +84,8 @@ Sub HightlightTypes()
         End If
 
         ' category: Electricity & Gas & Internet
-        If InStr(1, otherPartyCell, "Contact Energy", vbTextCompare) > 0 Then
+        If InStr(1, otherPartyCell, "Contact Energy", vbTextCompare) > 0  _
+            Or InStr(1, otherPartyCell, "Rockgas Limited", vbTextCompare) > 0 Then
             FindMatchingCell "Electricity & Gas & Internet", midRow, typeCell
             SetTypeCell summary.Cells(j, 6), typeCell
         End If
@@ -101,7 +102,7 @@ Sub HightlightTypes()
 
         ' category: Telephone
         If InStr(1, otherPartyCell, "One NZ", vbTextCompare) > 0 _ 
-          Or InStr(1, otherPartyCell, "Skinny", vbTextCompare) > 0 Then
+          Or InStr(1, otherPartyCell, "MyRepublic", vbTextCompare) > 0 Then
             FindMatchingCell "Telephone", midRow, typeCell
             SetTypeCell summary.Cells(j, 6), typeCell
         End If
@@ -135,10 +136,24 @@ Sub HightlightTypes()
         End If
 
         ' category: Rent
-        If InStr(1, otherPartyCell, "Chen", vbTextCompare) > 0 _ 
+        If InStr(1, otherPartyCell, "Chen X", vbTextCompare) > 0 _ 
           Or InStr(1, otherPartyCell, "Wang,", vbTextCompare) > 0 _ 
+          Or InStr(1, otherPartyCell, "Yucheng", vbTextCompare) > 0 _ 
           Or InStr(1, summary.Cells(j, 9), "rent", vbTextCompare) > 0 Then
             FindMatchingCell "Rent", midRow, typeCell
+            SetTypeCell summary.Cells(j, 6), typeCell
+        End If
+
+        ' category: Family Visut & Event
+        If InStr(1, otherPartyCell, "balancing budget", vbTextCompare) > 0 Then
+            FindMatchingCell "Family Visit & Event", midRow, typeCell
+            SetTypeCell summary.Cells(j, 6), typeCell
+        End If
+
+        ' category: Investment
+        If InStr(1, otherPartyCell, "mylotto.co.nz", vbTextCompare) > 0 _ 
+          Or InStr(1, summary.Cells(j, 7), "Superlife Workplace", vbTextCompare) > 0 Then
+            FindMatchingCell "Investment", midRow, typeCell
             SetTypeCell summary.Cells(j, 6), typeCell
         End If
             
