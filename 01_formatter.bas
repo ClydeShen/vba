@@ -19,6 +19,7 @@ Private Sub Anz(sheetName As String, tabColor As Long)
     
     SplitAmount
     addTypeColumn
+    setAutoFilter
     SetTabColor ws, tabColor
     
 End Sub
@@ -36,6 +37,7 @@ Private Sub Westpac(sheetName As String, tabColor As Long)
     
     SplitAmount
     addTypeColumn
+    setAutoFilter
     SetTabColor ws, tabColor
 
 End Sub
@@ -61,6 +63,7 @@ Private Sub Asb(sheetName As String, tabColor As Long)
     
     SplitAmount
     addTypeColumn
+    setAutoFilter
     SetTabColor ws, tabColor
     
 End Sub
@@ -102,6 +105,10 @@ Private Sub SetTabColor(ws As Worksheet, ByVal tabColor As Long)
    End If
 End Sub
 
+Private Sub setAutoFilter()
+    Columns("A:L").Select
+    Selection.AutoFilter
+End Sub
 
 Sub Formatter()
     ' set color reference
