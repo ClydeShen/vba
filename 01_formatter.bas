@@ -24,6 +24,22 @@ Private Sub Anz(sheetName As String, tabColor As Long)
     
 End Sub
 
+Private Sub Bnz(sheetName As String, tabColor As Long)
+    Dim ws As Worksheet
+    Set ws = ThisWorkbook.Worksheets(sheetName)
+    ws.Select
+    Columns("G:G").Select
+    Selection.Cut
+    Columns("B:B").Select
+    Selection.Insert Shift:=xlToRight
+    
+    SplitAmount
+    addTypeColumn
+    setAutoFilter
+    SetTabColor ws, tabColor
+    
+End Sub
+
 Private Sub Westpac(sheetName As String, tabColor As Long)
 
      Dim ws As Worksheet
@@ -112,9 +128,9 @@ End Sub
 
 Sub Formatter()
     ' set color reference
-    Anz "C-ANZ-go", None
-    Anz "C-ANZ-saving", LightBlue
-    Anz "S-ANZ-loan", DarkBlue
+    ' Anz "C-ANZ-go", None
+    ' Bnz "C-BNZ-go", LightBlue
+    ' Bnz "S-BNZ-loan", DarkBlue
     Westpac "S-Westpac", LightRed
-    Asb "Y-ASB", LightYellow
+    ' Asb "Y-ASB", LightYellow
 End Sub
