@@ -68,7 +68,7 @@ Sub HightlightTypes()
         Set analysisCodeCell = summary.Cells(j, 10)
 
         ' category: groceries
-        If InStr(1, otherPartyCell, "Countdown", vbTextCompare) > 0 _
+        If InStr(1, otherPartyCell, "Woolworths", vbTextCompare) > 0 _
             Or (InStr(1, otherPartyCell, "Pak N Save", vbTextCompare) > 0 And _
               InStr(1, otherPartyCell, "Pak N Save Fuel", vbTextCompare) = 0) _
             Or InStr(1, otherPartyCell, "New World", vbTextCompare) > 0 _
@@ -92,6 +92,7 @@ Sub HightlightTypes()
             Or InStr(1, otherPartyCell, "Gui Rice Noodle", vbTextCompare) > 0 _
             Or InStr(1, otherPartyCell, "Hello Mister Wyny", vbTextCompare) > 0 _
             Or InStr(1, otherPartyCell, "Jinweide Noodle", vbTextCompare) > 0 _
+            Or InStr(1, otherPartyCell, "Kingsmade Noodle", vbTextCompare) > 0 _
             Or InStr(1, otherPartyCell, "The Coffee Club", vbTextCompare) > 0 _
             Or InStr(1, otherPartyCell, "Chongqing Noodles", vbTextCompare) > 0 _
             Or InStr(1, otherPartyCell, "Doordash", vbTextCompare) > 0 _
@@ -114,7 +115,7 @@ Sub HightlightTypes()
         End If
 
         ' category: Mortgage repayments
-        If InStr(1, otherPartyCell, "Loan Payment", vbTextCompare) > 0 Then
+        If InStr(1, referenceCell, "LOAN PAYMT", vbTextCompare) > 0  Then
             FindMatchingCell "Mortgage repayments", midRow, categoryCell
             SetTypeCell typeCell, categoryCell
         End If
@@ -174,15 +175,15 @@ Sub HightlightTypes()
 
         ' category: Salary
         If InStr(1, analysisCodeCell, "FROM HAWKINS LIMITED", vbTextCompare) > 0 _ 
-          Or InStr(1, otherPartyCell, "Salary", vbTextCompare) > 0 Then
+          Or InStr(1, referenceCell, "DELOITTE SAL", vbTextCompare) > 0 Then
             FindMatchingCell "Salary", midRow, categoryCell
             SetTypeCell typeCell, categoryCell
         End If
 
         ' category: Rent
-        If InStr(1, otherPartyCell, "Chen X", vbTextCompare) > 0 _ 
+        If InStr(1, otherPartyCell, "Tong, Z", vbTextCompare) > 0 _ 
           Or InStr(1, otherPartyCell, "Wang,", vbTextCompare) > 0 _ 
-          Or InStr(1, otherPartyCell, "Yucheng", vbTextCompare) > 0 _ 
+          Or InStr(1, referenceCell, "19b", vbTextCompare) > 0 _ 
           Or InStr(1, particularsCell, "rent", vbTextCompare) > 0 Then
             FindMatchingCell "Rent", midRow, categoryCell
             SetTypeCell typeCell, categoryCell
@@ -197,6 +198,7 @@ Sub HightlightTypes()
         ' category: Investment
         If InStr(1, otherPartyCell, "mylotto.co.nz", vbTextCompare) > 0 _ 
             Or InStr(1, otherPartyCell, "EF207562 Wealth Mgmt", vbTextCompare) > 0 _
+            Or InStr(1, otherPartyCell, "0684626-51 SuperLife", vbTextCompare) > 0 _
             Or InStr(1, descriptionCell, "Superlife Workplace", vbTextCompare) > 0 Then
             FindMatchingCell "Investment", midRow, categoryCell
             SetTypeCell typeCell, categoryCell
