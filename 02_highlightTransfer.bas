@@ -278,7 +278,7 @@ Sub HightlightTransfer()
     ' ANZHighlightMatchingRows "C-ANZ-go", "C-ANZ-saving", LightBlue  'lightBlue
     ' ANZHighlightMatchingRows "C-ANZ-go", "S-ANZ-loan", LightBlue 'lightBlue
     BNZHighlightMatchingRows "C-BNZ-go", "S-BNZ-loan", DarkBlue, DarkBlue
-    ANZToWestpacHighlightMatchingRows "C-ANZ-go", "S-Westpac", LightRed, LightBlue
+    ' ANZToWestpacHighlightMatchingRows "C-ANZ-go", "S-Westpac", LightRed, LightBlue
     ' BNZToWestpacHighlightMatchingRows "C-BNZ-go", "S-Westpac", LightRed 'lightRed
     ASBToWestpacHighlightMatchingRows "Y-ASB", "S-Westpac", LightRed , LightYellow
     ' ANZLoanHighlightMatchingRows "C-ANZ-go", "S-ANZ-loan", DarkBlue 'darkBlue

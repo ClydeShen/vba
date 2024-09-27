@@ -201,7 +201,7 @@ End Sub
 
 Sub Formatter()
     ' set color reference
-    Anz "C-ANZ-go", None
+    ' Anz "C-ANZ-go", None
     Bnz "C-BNZ-go", LightBlue
     Bnz "S-BNZ-loan", DarkBlue
     Westpac "S-Westpac", LightRed
