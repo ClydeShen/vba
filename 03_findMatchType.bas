@@ -78,6 +78,9 @@ Sub HightlightTypes()
             Or InStr(1, otherPartyCell, "Wang Foodmarket", vbTextCompare) > 0 _
             Or InStr(1, otherPartyCell, "Freshchoice", vbTextCompare) > 0 _
             Or InStr(1, otherPartyCell, "DH Supermarket", vbTextCompare) > 0 _
+            Or InStr(1, otherPartyCell, "Wang Food", vbTextCompare) > 0 _
+            Or InStr(1, otherPartyCell, "Young", vbTextCompare) > 0 _
+            Or InStr(1, otherPartyCell, "FoodieAsianSuperm", vbTextCompare) > 0 _
             Or InStr(1, otherPartyCell, "Seasons Markets", vbTextCompare) > 0 Then
 
             FindMatchingCell "Groceries", midRow, categoryCell
@@ -87,12 +90,20 @@ Sub HightlightTypes()
         ' category: Eating out
          If InStr(1, otherPartyCell, "4140Edison", vbTextCompare) > 0 _
             Or InStr(1, otherPartyCell, "9180Edison", vbTextCompare) > 0 _
+            Or InStr(1, otherPartyCell, "Chen,Dong",vbTextCompare) > 0 _
+            Or IsStr(1, otherPartyCell, "Hu,Nan", vbTextCompare) > 0 _
             Or InStr(1, otherPartyCell, "Hungrypanda", vbTextCompare) > 0 _
             Or InStr(1, otherPartyCell, "Golden City Cuisine", vbTextCompare) > 0 _
             Or InStr(1, otherPartyCell, "Gui Rice Noodle", vbTextCompare) > 0 _
             Or InStr(1, otherPartyCell, "Hello Mister Wyny", vbTextCompare) > 0 _
             Or InStr(1, otherPartyCell, "Jinweide Noodle", vbTextCompare) > 0 _
             Or InStr(1, otherPartyCell, "Kingsmade Noodle", vbTextCompare) > 0 _
+            Or InStr(1, otherPartyCell, "1981 Noodle House", vbTextCompare) > 0 _
+            Or InStr(1, otherPartyCell, "NO1 BEEF RAMAN", vbTextCompare) > 0 _
+            Or InStr(1, otherPartyCell, "No1 Beef Raman", vbTextCompare) > 0 _
+            Or InStr(1, otherPartyCell, "Sunnynook Fast Food", vbTextCompare) > 0 _
+            Or InStr(1, otherPartyCell, "Mr LI Takeaway", vbTextCompare) > 0 _
+            Or InStr(1, otherPartyCell, "Daily Bread Galway", vbTextCompare) > 0 _ 
             Or InStr(1, otherPartyCell, "The Coffee Club", vbTextCompare) > 0 _
             Or InStr(1, otherPartyCell, "Chongqing Noodles", vbTextCompare) > 0 _
             Or InStr(1, otherPartyCell, "Doordash", vbTextCompare) > 0 _
@@ -121,7 +132,8 @@ Sub HightlightTypes()
         End If
 
         ' category: Electricity & Gas & Internet
-        If InStr(1, otherPartyCell, "Contact Energy", vbTextCompare) > 0  _
+        If InStr(1, otherPartyCell, "Skinny Fixed", vbTextCompare) > 0  _
+            Or InStr(1, otherPartyCell, "Flick Energy Limited", vbTextCompare) > 0 _
             Or InStr(1, otherPartyCell, "Rockgas Limited", vbTextCompare) > 0 Then
             FindMatchingCell "Electricity & Gas & Internet", midRow, categoryCell
             SetTypeCell typeCell, categoryCell
@@ -133,14 +145,15 @@ Sub HightlightTypes()
             Or InStr(1, otherPartyCell, "BP", vbTextCompare) > 0 _
             Or InStr(1, otherPartyCell, "KIWI FUELS", vbTextCompare) > 0 _
             Or InStr(1, otherPartyCell, "Caltex", vbTextCompare) > 0 _
+            Or InStr(1, otherPartyCell, "AT Public", vbTextCompare) > 0 _
             Or InStr(1, otherPartyCell, "Pak N Save Fuel", vbTextCompare) > 0 Then
-            FindMatchingCell "Travel", midRow, categoryCell
+            FindMatchingCell "Travel", midRow, categoryCellSkinny Fixed
             SetTypeCell typeCell, categoryCell
         End If
 
         ' category: Telephone
-        If InStr(1, otherPartyCell, "One NZ", vbTextCompare) > 0 _ 
-          Or InStr(1, otherPartyCell, "MyRepublic", vbTextCompare) > 0 Then
+        If InStr(1, otherPartyCell, "One New Zealand", vbTextCompare) > 0 _ 
+          Or InStr(1, otherPartyCell, "Rocket Mobile", vbTextCompare) > 0 Then
             FindMatchingCell "Telephone", midRow, categoryCell
             SetTypeCell typeCell, categoryCell
         End If
@@ -189,7 +202,7 @@ Sub HightlightTypes()
             SetTypeCell typeCell, categoryCell
         End If
 
-        ' category: Family Visut & Event
+        ' category: Family Visit & Event
         If InStr(1, otherPartyCell, "balancing budget", vbTextCompare) > 0 Then
             FindMatchingCell "Family Visit & Event", midRow, categoryCell
             SetTypeCell typeCell, categoryCell
@@ -198,8 +211,9 @@ Sub HightlightTypes()
         ' category: Investment
         If InStr(1, otherPartyCell, "mylotto.co.nz", vbTextCompare) > 0 _ 
             Or InStr(1, otherPartyCell, "EF207562 Wealth Mgmt", vbTextCompare) > 0 _
-            Or InStr(1, otherPartyCell, "0684626-51 SuperLife", vbTextCompare) > 0 _
-            Or InStr(1, descriptionCell, "Superlife Workplace", vbTextCompare) > 0 Then
+            Or InStr(1, otherPartyCell, "Westpac Bonus Saver", vbTextCompare) > 0 _
+            Or InStr(1, analysisCodeCell, "SUPERLIFE", vbTextCompare) > 0 _
+            Or InStr(1, analysisCodeCell, "SMART INVEST", vbTextCompare) > 0 Then
             FindMatchingCell "Investment", midRow, categoryCell
             SetTypeCell typeCell, categoryCell
         End If
