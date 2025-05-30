@@ -185,7 +185,12 @@ Sub HightlightTypes()
             SetTypeCell typeCell, categoryCell
         End If
 
-
+        ' category: Vehicle maintenance/repairs
+        If InStr(1, otherPartyCell, "SUPERCHEAP", vbTextCompare) > 0 Then
+            FindMatchingCell "Vehicle maintenance/repairs", midRow, categoryCell
+            SetTypeCell typeCell, categoryCell
+        End If
+        
         ' category: Salary
         If InStr(1, analysisCodeCell, "FROM HAWKINS LIMITED", vbTextCompare) > 0 _ 
           Or InStr(1, referenceCell, "DELOITTE SAL", vbTextCompare) > 0 Then
@@ -220,7 +225,8 @@ Sub HightlightTypes()
             
 
         ' category: Personal care
-        If InStr(1, otherPartyCell, "CW ", vbTextCompare) > 0  Then
+        If InStr(1, otherPartyCell, "CW ", vbTextCompare) > 0  _
+            Or InStr(1, otherPartyCell, "Chemist Warehouse", vbTextCompare) > 0 Then
             FindMatchingCell "Personal care", midRow, categoryCell
             SetTypeCell typeCell, categoryCell
         End If
