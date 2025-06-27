@@ -80,6 +80,7 @@ Sub HightlightTypes()
             Or InStr(1, otherPartyCell, "DH Supermarket", vbTextCompare) > 0 _
             Or InStr(1, otherPartyCell, "Wang Food", vbTextCompare) > 0 _
             Or InStr(1, otherPartyCell, "Young", vbTextCompare) > 0 _
+            Or InStr(1, otherPartyCell, "Rui Feng Kitchen", vbTextCompare) > 0 _
             Or InStr(1, otherPartyCell, "FoodieAsianSuperm", vbTextCompare) > 0 _
             Or InStr(1, otherPartyCell, "Seasons Markets", vbTextCompare) > 0 Then
 
@@ -91,7 +92,7 @@ Sub HightlightTypes()
          If InStr(1, otherPartyCell, "4140Edison", vbTextCompare) > 0 _
             Or InStr(1, otherPartyCell, "9180Edison", vbTextCompare) > 0 _
             Or InStr(1, otherPartyCell, "Chen,Dong",vbTextCompare) > 0 _
-            Or IsStr(1, otherPartyCell, "Hu,Nan", vbTextCompare) > 0 _
+            Or InStr(1, otherPartyCell, "Hu,Nan", vbTextCompare) > 0 _
             Or InStr(1, otherPartyCell, "Hungrypanda", vbTextCompare) > 0 _
             Or InStr(1, otherPartyCell, "Golden City Cuisine", vbTextCompare) > 0 _
             Or InStr(1, otherPartyCell, "Gui Rice Noodle", vbTextCompare) > 0 _
@@ -146,8 +147,11 @@ Sub HightlightTypes()
             Or InStr(1, otherPartyCell, "KIWI FUELS", vbTextCompare) > 0 _
             Or InStr(1, otherPartyCell, "Caltex", vbTextCompare) > 0 _
             Or InStr(1, otherPartyCell, "AT Public", vbTextCompare) > 0 _
+            Or InStr(1, otherPartyCell, "Z Constell", vbTextCompare) > 0 _
+            Or InStr(1, otherPartyCell, "Mobil Wairau", vbTextCompare) > 0 _
+            Or InStr(1, analysisCodeCell, "AT PUBLIC TRANSPORT", vbTextCompare) > 0 _
             Or InStr(1, otherPartyCell, "Pak N Save Fuel", vbTextCompare) > 0 Then
-            FindMatchingCell "Travel", midRow, categoryCellSkinny Fixed
+            FindMatchingCell "Travel", midRow, categoryCell
             SetTypeCell typeCell, categoryCell
         End If
 
