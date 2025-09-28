@@ -27,6 +27,7 @@ Private Sub Anz(sheetName As String, tabColor As Long)
     SetAutoFilter
     ConverDateFormat ws
     SetTabColor ws, tabColor
+    UpdateBankNameColumn ws, sheetName
     
 End Sub
 
@@ -46,12 +47,13 @@ Private Sub Bnz(sheetName As String, tabColor As Long)
     AddTypeColumn
     SetAutoFilter
     SetTabColor ws, tabColor
-    
+    UpdateBankNameColumn ws, sheetName
+
 End Sub
 
 Private Sub Westpac(sheetName As String, tabColor As Long)
 
-     Dim ws As Worksheet
+    Dim ws As Worksheet
     Set ws = ThisWorkbook.Worksheets(sheetName)
     ws.Select
 
@@ -65,12 +67,13 @@ Private Sub Westpac(sheetName As String, tabColor As Long)
     SetAutoFilter
     ConverDateFormat ws
     SetTabColor ws, tabColor
+    UpdateBankNameColumn ws, sheetName
 
 End Sub
 
 Private Sub Asb(sheetName As String, tabColor As Long)
     
-     Dim ws As Worksheet
+    Dim ws As Worksheet
     Set ws = ThisWorkbook.Worksheets(sheetName)
     ws.Select
 
@@ -92,6 +95,7 @@ Private Sub Asb(sheetName As String, tabColor As Long)
     SetAutoFilter
     ConverDateFormat ws
     SetTabColor ws, tabColor
+    UpdateBankNameColumn ws, sheetName
     
 End Sub
 
@@ -199,6 +203,18 @@ Private Sub SetAutoFilter()
     Selection.AutoFilter
 End Sub
 
+Sub UpdateBankNameColumn(ws As Worksheet, bankName As String)
+        Dim LastRow As Long
+        LastRow = ws.Cells(ws.Rows.Count, "A").End(xlUp).Row
+        ' Set header
+        ws.Cells(1, "K").Value = "Bank/Card"
+        Dim i As Long
+        For i = 2 To LastRow ' Assuming row 1 is header
+            ws.Cells(i, "K").Value = bankName
+            ws.Cells(i, "K").Interior.Color = ws.Tab.Color
+        Next i
+End Sub
+
 Sub Formatter()
     ' set color reference
     ' Anz "C-ANZ-go", None
@@ -207,3 +223,4 @@ Sub Formatter()
     Westpac "S-Westpac", LightRed
     Asb "Y-ASB", LightYellow
 End Sub
+    
